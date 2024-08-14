@@ -1,0 +1,59 @@
+.App {
+
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr); /* 12 equal columns */
+  grid-gap: 16px; /* Optional: Adds space between columns */
+
+  justify-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-content {
+  grid-column: 3 / span 8; /* Start at the 3rd column and span 8 columns */
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .App-header {
+    grid-template-columns: repeat(12, 1fr); /* Still 12 columns on mobile */
+  }
+  .App-content {
+    grid-column: 2 / span 10; /* Start at the 2nd column and span 10 columns */
+  }
+}
+
+@media (max-width: 480px) {
+  .App-content {
+    grid-column: 2 / span 10; /* Start at the 2nd column and span 10 columns */
+  }
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
