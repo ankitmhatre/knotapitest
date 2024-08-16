@@ -17,3 +17,11 @@ Route::get('/contacts/{id}', [ContactsController::class, 'getSingleContact']);
 
 Route::post('/contacts/create', [ContactsController::class, 'createContact']);
 
+
+
+// In routes/api.php or routes/web.php
+Route::delete('/contacts/{id}', [ContactsController::class, 'deleteContact']);
+
+
+
+Route::put('/contacts/{id}', [ContactsController::class, 'updateContact']);

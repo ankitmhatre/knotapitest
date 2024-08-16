@@ -1,10 +1,21 @@
 // ContactCard.js
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
+import './ContactCard.css'
 
-const ContactCard = ({ contact }) => {
+
+
+const ContactCard = ({ contact , onDelete, deletingId}) => {
+  const navigate = useNavigate();
+
+
   return (
-    <div style={styles.card}>
-      <div style={styles.content}>
+    <div style={styles.card} >
+      <div style={styles.content} onClick={()=>{
+      navigate(`/contact/${contact.contact_id}`)
+    }}>
         <div style={
             {...styles.attribute,  ...styles.contactName}
         }>
@@ -16,10 +27,18 @@ const ContactCard = ({ contact }) => {
         <div style={ {...styles.attribute,  ...styles.contactPhone}}>
 {contact.phone}
         </div>
+        
+     
+
         {/* <div style={styles.attribute}>
           <strong>Address:</strong> {contact.address.street}, {contact.address.city}, {contact.address.state} {contact.address.postal_code}, {contact.address.country}
         </div> */}
       </div>
+      <FontAwesomeIcon
+                            icon={faTrash}
+                            className="delete-icon"
+                            onClick={() => onDelete(contact.contact_id)}
+                        />
     </div>
   );
 };

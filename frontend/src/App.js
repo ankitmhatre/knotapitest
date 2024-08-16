@@ -1,63 +1,59 @@
 // App.js
 import React from 'react';
-import ContactsList from './components/ContactsList';
+
 import './App.css'
-import ContactListHeader from './components/ContactListHeader';
-const mockContacts = [
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
+import AllContacts from './pages/AllContacts';
+import CreateContact from './pages/CreateContact';
+import EditContact from './pages/EditContact';
+import ViewContact from './pages/ViewContact';
+
+
+
+
+
+const router = createBrowserRouter([
+
   {
-    id: 1,
-    first_name: "John",
-    last_name: "Doe",
-    email: "john.doe@example.com",
-    phone: "+1-202-555-0171",
-    address: {
-      street: "123 Elm Street",
-      city: "Springfield",
-      state: "IL",
-      postal_code: "62701",
-      country: "USA"
-    }
+    path: "/",
+    element: <AllContacts />,
+
   },
   {
-    id: 2,
-    first_name: "Jane",
-    last_name: "Smith",
-    email: "jane.smith@example.com",
-    phone: "+1-202-555-0123",
-    address: {
-      street: "456 Oak Avenue",
-      city: "Hometown",
-      state: "CA",
-      postal_code: "90210",
-      country: "USA"
-    }
+    path: "/create",
+    element: <CreateContact />,
   },
   {
-    id: 3,
-    first_name: "Michael",
-    last_name: "Johnson",
-    email: "michael.johnson@example.com",
-    phone: "+1-202-555-0199",
-    address: {
-      street: "789 Pine Road",
-      city: "Metropolis",
-      state: "NY",
-      postal_code: "10001",
-      country: "USA"
-    }
-  }
-];
+    path: "/edit/:id",
+    element: <EditContact />,
+  },
+
+  {
+    path: "/contact/:id",
+    element: <ViewContact />,
+  },
+
+  
+
+  
+
+  
+]);
 
 const App = () => {
   return (
-    <div className="App">
-    <header className="App-header">
-      <div className="App-content">
-        <h1>Contacts List</h1>
-        <ContactsList contacts={mockContacts} />
-      </div>
-    </header>
+    <React.StrictMode>
+     <div className="App">
+     <RouterProvider router={router} />
   </div>
+
+   
+  </React.StrictMode>
+
+   
   );
 };
 

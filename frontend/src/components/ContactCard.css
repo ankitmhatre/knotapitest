@@ -1,0 +1,27 @@
+.contacts-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    position: relative;
+}
+
+.contact-actions {
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.contact-item:hover .contact-actions {
+    opacity: 1;
+}
+
+.delete-icon {
+    color: red;
+    cursor: pointer;
+    font-size: 16px;
+}
