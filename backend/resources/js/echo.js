@@ -18,8 +18,9 @@ window.Echo = new Echo({
 // resources/assets/js/app.js
 
 Echo.private('chat')
-  .listen('chat', (e) => {
-
-console.log(e)
-   
+  .listen('MessageSent', (e) => {
+    this.messages.push({
+      message: e.message,
+    
+    });
   });

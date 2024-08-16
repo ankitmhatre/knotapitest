@@ -15,16 +15,11 @@ class ContactsController extends Controller
 {
     public function getContacts()
     {
-        $contacts = Contacts::all();    
-        
-        event("a", "b");
-
-
-
-
+        $contacts = Contacts::all();   
         return response()->json($contacts);
     }
 
+    
     /**
      * Single contact
      */
@@ -145,6 +140,15 @@ class ContactsController extends Controller
         if (!empty($updatedAttributes)) {
             ContactHistory::insert($updatedAttributes);
         }
+
+        //TODO: Also send a websocket broadcast
+/**
+         * {"event":"pusher","data":"{\"code\":200,\"message\":\"Helo\"}"}
+         */
+        $message = "Hello from server";
+
+        event(new MessageBlock($message));
+        
     
         // Return the updated contact in the response
         return response()->json([
