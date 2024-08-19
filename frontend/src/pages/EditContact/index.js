@@ -13,6 +13,7 @@ const EditContact = () => {
     const [success, setSuccess] = useState('');
     const [loading, setLoading] = useState(false); // Manage loading state
     const navigate = useNavigate();
+    const [history, setHistory] = useState([]);
 
     useEffect(() => {
         if (id) {
@@ -21,7 +22,9 @@ const EditContact = () => {
                 setLoading(true);
                 try {
                     const response = await axiosInstance.get(`/api/contacts/${id}`);
-                    const contact = response.data;
+              
+                    const contact = response.data.contact;
+                    setHistory(response.data.history);
                     setFirstName(contact.first_name);
                     setLastName(contact.last_name);
                     setPhone(contact.phone);
@@ -40,8 +43,9 @@ const EditContact = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true)
         try {
-            if (id) {
+            
                 // Update contact
                 const response = await axiosInstance.put(
                     `/api/contacts/${id}`,
@@ -57,31 +61,22 @@ const EditContact = () => {
                         },
                     }
                 );
-                setSuccess('Contact updated successfully!');
-            } else {
-                // Create new contact
-                const response = await axiosInstance.post(
-                    '/api/contacts/create',
-                    {
-                        first_name: firstName,
-                        last_name: lastName,
-                        email: email,
-                        phone: phone,
-                    },
-                    {
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                    }
-                );
-                setSuccess('Contact created successfully!');
-            }
-            setError('');
-            navigate('/contacts'); // Navigate back to the contacts list
+
+
+                if(response.data.status==='success'){
+                    setSuccess('Contact updated successfully!');
+                    setLoading(false)
+                    setError('');
+                    navigate('/');
+                }else{
+                    setLoading(false)
+                }
+                 // Navigate back to the contacts list
         } catch (error) {
             setSuccess('');
             setError('An error occurred. Please try again.');
             console.error(error);
+            setLoading(false)
         }
     };
 
@@ -139,6 +134,26 @@ const EditContact = () => {
             )}
             {success && <p className="success-message">{success}</p>}
             {error && <p className="error-message">{error}</p>}
+
+
+
+            {
+                !loading && <div className="history-section">
+                <h2>Change History</h2>
+                {history.length > 0 ? (
+                    history.map((record) => (
+                        <div key={record.id} className="history-card">
+                            <p><strong>Timestamp:</strong> {new Date(record.timestamp).toLocaleString()}</p>
+                            <p><strong>Attribute Changed:</strong> {record.attribute_changed}</p>
+                            <p><strong>Previous Value:</strong> {record.attribute_previous_value}</p>
+                            <p><strong>Updated Value:</strong> {record.attribute_update_value}</p>
+                        </div>
+                    ))
+                ) : (
+                    <p>No history available.</p>
+                )}
+            </div>
+            }
         </div>
     );
 };

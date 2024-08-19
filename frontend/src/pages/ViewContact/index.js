@@ -63,7 +63,7 @@ const ViewContact = () => {
                 <p><strong>Email:</strong> {contact.email}</p>
                 <p><strong>Phone:</strong> {contact.phone}</p>
             </div>
-            <div className="contact-actions">
+
                 <h4>Actions:</h4>
                 <button className="edit-button" onClick={handleEdit}>
                     <FontAwesomeIcon icon={faEdit} /> Edit
@@ -71,7 +71,7 @@ const ViewContact = () => {
                 <button className="delete-button" onClick={handleDelete} disabled={deleting}>
                     <FontAwesomeIcon icon={faTrash} /> {deleting ? 'Deleting...' : 'Delete'}
                 </button>
-            </div>
+           
             <br /><br />
             <button className="back-button" onClick={() => navigate('/')}>
                 Back to Contacts
