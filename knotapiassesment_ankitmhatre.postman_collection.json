@@ -1,0 +1,117 @@
+{
+	"info": {
+		"_postman_id": "ee4f601b-18ab-4f95-b24d-5f70a4d3f7e5",
+		"name": "knotapiassesment_ankitmhatre",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "8371510",
+		"_collection_link": "https://ankitmhatre10.postman.co/workspace/Knot-workspace~cba8a4bd-2850-4a00-a7f1-a2911d6a6c91/collection/8371510-ee4f601b-18ab-4f95-b24d-5f70a4d3f7e5?action=share&source=collection_link&creator=8371510"
+	},
+	"item": [
+		{
+			"name": "contacts",
+			"item": [
+				{
+					"name": "Get all contacts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{knotapitestserver}}/api/contacts"
+					},
+					"response": []
+				},
+				{
+					"name": "Welcome page",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{knotapitestserver}}/api/test"
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Contact",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "{{knotapitestserver}}/api/contacts/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Single contact",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": "{{knotapitestserver}}/api/contacts/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Single contact",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\n    \"first_name\": \"Ankitaasdadhadsh\",\n    \"last_name\": \"Mhatre\",\n    \"email\": \"aasd@gmail.com\",\n    \"phone\": 4564\n    \n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://127.0.0.1:8000/api/contacts/1"
+					},
+					"response": []
+				},
+				{
+					"name": "Create a contact",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"first_name\": \"Atharva\",\n    \"last_name\": \"Dumbre\",\n    \"email\": \"asdads@jsd.cinn\",\n    \"phone\": 763278237\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{knotapitestserver}}/api/contacts/create"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "knotapitestserver",
+			"value": "127.0.0.1:8000",
+			"type": "string"
+		}
+	]
+}
