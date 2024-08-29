@@ -4,8 +4,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactsController;
 
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/test', function () {
+    return json_encode([
+        'message' => "Hello"]);
 });
 
 
