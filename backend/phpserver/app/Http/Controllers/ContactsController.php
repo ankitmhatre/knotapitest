@@ -49,7 +49,7 @@ class ContactsController extends Controller
     {
         $validatedData = $request->all();
 
-       // sleep(20);
+        sleep(20);
         
         try {
             $contact = Contacts::create([
